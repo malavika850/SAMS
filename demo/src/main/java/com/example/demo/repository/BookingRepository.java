@@ -16,7 +16,8 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     List<Booking> findByVenueId(Long venueId);
 
-    // Check for overlapping bookings
+    List<Booking> findByVenueIdAndDate(Long venueId, LocalDate date);
+
     @Query("SELECT b FROM Booking b WHERE b.venue.id = :venueId " +
            "AND b.date = :date " +
            "AND b.status != 'CANCELLED' " +

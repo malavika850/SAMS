@@ -39,6 +39,7 @@ public class SecurityConfig {
                 .requestMatchers("/venues/**").hasAnyRole("ADMIN", "OWNER")
                 .requestMatchers("/regulations/**").hasAnyRole("ADMIN", "OWNER")
                 .requestMatchers("/exception-rules/**").hasAnyRole("ADMIN", "OWNER")
+                .requestMatchers("/venue-images/**").hasAnyRole("ADMIN", "OWNER")
 
                 // ADMIN and CUSTOMER
                 .requestMatchers("/bookings/**").hasAnyRole("ADMIN", "CUSTOMER")

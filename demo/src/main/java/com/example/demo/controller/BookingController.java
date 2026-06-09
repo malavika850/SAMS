@@ -4,6 +4,7 @@ import com.example.demo.model.Booking;
 import com.example.demo.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,18 @@ public class BookingController {
     @GetMapping("/venue/{venueId}")
     public List<Booking> getBookingsByVenue(@PathVariable Long venueId) {
         return bookingService.getBookingsByVenue(venueId);
+    }
+
+    @GetMapping("/available")
+    public List<String> getAvailableSlots(
+            @RequestParam Long venueId,
+            @RequestParam String date,
+            @RequestParam int duration) {
+        return bookingService.getAvailableSlots(
+            venueId,
+            LocalDate.parse(date),
+            duration
+        );
     }
 
     @PostMapping
